@@ -1,8 +1,10 @@
 import { Database } from '@/lib/database.types';
 import { createServerComponentClient, SupabaseClient } from '@supabase/auth-helpers-nextjs';
 import React from 'react'
-import { cookies}from "next/headers";
+import { cookies } from "next/headers";
 import SubscriptionManagementButton from '@/components/checkout/SubscriptionManagementButton';
+
+export const dynamic = 'force-dynamic'
 
 const getProfileDate = async (supabase: SupabaseClient<Database>) => {
     const { data: profile } = await supabase
@@ -13,7 +15,8 @@ const getProfileDate = async (supabase: SupabaseClient<Database>) => {
 };
 
 const Dashboard = async() => {
-    const supabase = createServerComponentClient({ cookies })
+    const cookieStore = cookies()
+    const supabase = createServerComponentClient({ cookies: () => cookieStore })
     const profile = await getProfileDate(supabase);
 
   return (

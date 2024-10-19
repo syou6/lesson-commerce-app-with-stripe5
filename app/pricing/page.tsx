@@ -52,46 +52,48 @@ const getProfileDate = async (supabase: SupabaseClient<Database>) => {
 };
 
 const PricingPage = async() => {
-const supabase = createServerComponentClient({cookies})
-const { data: user } = await supabase.auth.getSession();
+  const cookieStore = cookies()
+  const supabase = createServerComponentClient({ cookies: () => cookieStore })
+  const { data: user } = await supabase.auth.getSession();
 
-const [plans, profile] =await Promise.all([
-    await getAllPlans(),
-    await getProfileDate(supabase),
-]);
+  const [plans, profile] =await Promise.all([
+      await getAllPlans(),
+      await getProfileDate(supabase),
+  ]);
 
 
-const showSubscribeButton = !!user.session && !profile?.is_subscribed; 
-const showCreateAccountButton = !user.session;
-const showManageSubscriptionButton = !!user.session && profile?.is_subscribed;
+  const showSubscribeButton = !!user.session && !profile?.is_subscribed; 
+  const showCreateAccountButton = !user.session;
+  const showManageSubscriptionButton = !!user.session && profile?.is_subscribed;
 
-    return (
-    <div className="w-full max-w-3xl mx-auto py-16 flex justify-around">
-        {plans.map((plan) => (
-             <Card className="shadow-md" key={plan.id}>
-             <CardHeader>
-              <CardTitle>{plan.name} プラン</CardTitle>
-              <CardDescription>
-                {plan.name}
-              </CardDescription>
-             </CardHeader>
-             <CardContent>
-               {plan.price}円/ {plan.interval}
-             </CardContent>
-             <CardFooter>
-                {showSubscribeButton && <SubscriptionButton planId={plan.id} /> }
-                {showCreateAccountButton && <AuthSeverButton />}
-                {showManageSubscriptionButton && (
-                    <Button>
-                        <Link href= "/dashboard">
-                        サブスクリプション管理する
-                        </Link>
-                     </Button>
-                    )}
-             </CardFooter>
-             </Card>
-        ))}
-    </div>
-    );
+  return (
+  <div className="w-full max-w-3xl mx-auto py-16 flex justify-around">
+      {plans.map((plan) => (
+           <Card className="shadow-md" key={plan.id}>
+           <CardHeader>
+            <CardTitle>{plan.name} プラン</CardTitle>
+            <CardDescription>
+              {plan.name}
+            </CardDescription>
+           </CardHeader>
+           <CardContent>
+             {plan.price}円/ {plan.interval}
+           </CardContent>
+           <CardFooter>
+              {showSubscribeButton && <SubscriptionButton planId={plan.id} /> }
+              {showCreateAccountButton && <AuthSeverButton />}
+              {showManageSubscriptionButton && (
+                  <Button>
+                      <Link href= "/dashboard">
+                      サブスクリプション管理する
+                      </Link>
+                   </Button>
+                  )}
+           </CardFooter>
+           </Card>
+      ))}
+  </div>
+  );
 };
 export default PricingPage;
+export const dynamic = 'force-dynamic'
