@@ -43,8 +43,6 @@ const {id,  email } = data.record;
         });
     } catch (error) {
         console.error('Stripe顧客作成エラー:', error);
-        return NextResponse.json({
-            message: "Stripe顧客の作成中にエラーが発生しました。",
-        }, { status: 500 });
+        return NextResponse.json({ error: 'Stripe顧客の作成中にエラーが発生しました' }, { status: 500 });
     }
 }

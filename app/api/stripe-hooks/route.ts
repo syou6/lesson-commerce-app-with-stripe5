@@ -72,11 +72,11 @@ export async function POST(req: NextRequest) {
         }
 
     return NextResponse.json({ received: true });
-  } catch (err) {
-    if (err instanceof initStripe.errors.StripeError) {
-      return NextResponse.json(`Webhook Error: ${err.message}`, { status: 400 });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json(`Webhook Error: ${error.message}`, { status: 400 });
     } else {
-      console.error('Unknown error:', err);
+      console.error('Unknown error:', error);
       return NextResponse.json('Internal Server Error', { status: 500 });
     }
   }
