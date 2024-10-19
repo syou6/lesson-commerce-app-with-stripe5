@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Database } from "@/lib/database.types";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextRequest, NextResponse } from "next/server";

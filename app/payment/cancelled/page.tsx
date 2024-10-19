@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 const Cancelled = () => {
   return (
     <div>お支払いがキャンセルされました。</div>

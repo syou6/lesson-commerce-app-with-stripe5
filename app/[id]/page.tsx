@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { createServerComponentClient, SupabaseClient } from "@supabase/auth-helpers-nextjs";
 import React from "react";
 import {cookies} from "next/headers";
