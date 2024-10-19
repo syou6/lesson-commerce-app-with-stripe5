@@ -71,8 +71,13 @@ export async function POST(req: NextRequest) {
          break;
         }
 
-    return NextResponse.json({ received: true })
-} catch (err: any) {
-    return NextResponse.json(`Webhook Error: ${err.message}`, { status: 401 });
+    return NextResponse.json({ received: true });
+  } catch (err) {
+    if (err instanceof initStripe.errors.StripeError) {
+      return NextResponse.json(`Webhook Error: ${err.message}`, { status: 400 });
+    } else {
+      console.error('Unknown error:', err);
+      return NextResponse.json('Internal Server Error', { status: 500 });
+    }
   }
 }

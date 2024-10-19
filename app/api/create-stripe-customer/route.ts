@@ -19,18 +19,32 @@ const {id,  email } = data.record;
 
 
     const stripe = new initiStripe(process.env.STRIPE_SECRET_KEY!);
-    const customer = await stripe.customers.create({
-        email,
-    });
+    try {
+        const customer = await stripe.customers.create({
+            email,
+        });
 
-    const { error } = await supabase
-    .from("profile")
-    .update({
-        stripe_customer: customer.id,
-    })
-    .eq("id", id);
-    
-    return NextResponse.json({
-        message: `stripe customer created: ${customer.id}`,
-    });
+        const { error: supabaseError } = await supabase
+        .from("profile")
+        .update({
+            stripe_customer: customer.id,
+        })
+        .eq("id", id);
+
+        if (supabaseError) {
+            console.error('Supabaseエラー:', supabaseError);
+            return NextResponse.json({
+                message: "Supabaseの更新中にエラーが発生しました。",
+            }, { status: 500 });
+        }
+        
+        return NextResponse.json({
+            message: `stripe customer created: ${customer.id}`,
+        });
+    } catch (error) {
+        console.error('Stripe顧客作成エラー:', error);
+        return NextResponse.json({
+            message: "Stripe顧客の作成中にエラーが発生しました。",
+        }, { status: 500 });
+    }
 }

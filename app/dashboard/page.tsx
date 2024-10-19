@@ -1,6 +1,5 @@
 import { Database } from '@/lib/database.types';
 import { createServerComponentClient, SupabaseClient } from '@supabase/auth-helpers-nextjs';
-import { profile } from 'console'
 import React from 'react'
 import { cookies}from "next/headers";
 import SubscriptionManagementButton from '@/components/checkout/SubscriptionManagementButton';

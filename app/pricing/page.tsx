@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { createServerComponentClient, SupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { createServer } from "http2";
 import initStripe, { Stripe } from "stripe";
 import { cookies} from "next/headers";
 
