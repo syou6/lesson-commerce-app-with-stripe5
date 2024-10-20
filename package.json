@@ -7,34 +7,32 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:types": "npx supabase gen types --lang=typescript --project-id zwfewrnxjtpqscagbdzr > lib/database.types.ts "
+    "db:types": "npx supabase gen types typescript --project-id rtzhepjsjhabdajyznav > lib/database.types.ts"
   },
   "dependencies": {
-    "@next/third-parties": "^14.2.15",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@stripe/stripe-js": "^4.8.0",
-    "@supabase/auth-helpers-nextjs": "^0.10.0",
-    "autoprefixer": "^10.4.20",
+    "@next/third-parties": "^14.1.4",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@stripe/stripe-js": "^3.2.0",
+    "@supabase/auth-helpers-nextjs": "^0.9.0",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.453.0",
-    "next": "^14.2.15",
+    "clsx": "^2.1.0",
+    "lucide-react": "^0.360.0",
+    "next": "^14.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "stripe": "^17.2.0",
-    "tailwind-merge": "^2.5.4",
+    "stripe": "^14.22.0",
+    "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "^8.10.0",
-    "@typescript-eslint/parser": "^8.10.0",
+    "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "14.1.4",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
 }
