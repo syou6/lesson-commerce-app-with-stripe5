@@ -2,8 +2,8 @@ export const dynamic = 'force-dynamic'
 
 import Link from "next/link";
 import React from "react";
-import { Button } from "./button";
-import AuthSeverButton from "../auth/AuthSeverButton";
+import { Button } from "@/components/ui/button";
+import AuthSeverButton from "@/components/auth/AuthSeverButton";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import {cookies} from "next/headers";
 
