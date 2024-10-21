@@ -78,3 +78,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 # lesson-commerce-app-with-stripe# lesson-commerce-app-with-stripe5
 # lesson-commerce-app-with-stripe5
+# lesson-commerce-app-with-stripe5
