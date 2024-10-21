@@ -96,6 +96,7 @@ export async function GET(req: NextRequest) {
   const { data, error } = await supabase.auth.getUser();
 
   if (error || !data.user) {
+    console.error('Authentication error:', error);
     return NextResponse.json({ error: "Unauthorized" }, { status: 401, headers });
   }
 
